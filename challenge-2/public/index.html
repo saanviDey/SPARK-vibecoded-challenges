@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UNO | The card room</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <b>UNO <small>THE CARD ROOM</small></b>
+      <span id="connection">2–4 players · Live multiplayer</span>
+    </header>
+
+    <main>
+      <section id="welcome">
+        <article>
+          <p class="eyebrow">LESS SETUP. MORE PLAY.</p>
+          <h1>Good company.<br />One last card.</h1>
+          <p>Create a room, invite your friends, and deal in.</p>
+
+          <div class="sample">
+            <div class="card red">7</div>
+            <div class="card blue">↔</div>
+            <div class="card yellow">2</div>
+          </div>
+        </article>
+
+        <form id="joinform" class="panel">
+          <p class="eyebrow">TAKE A SEAT</p>
+          <h2>Your next round starts here.</h2>
+
+          <label for="name">Player name</label>
+          <input
+            id="name"
+            maxlength="20"
+            required
+            placeholder="What should we call you?"
+          />
+
+          <button>Create a room →</button>
+
+          <p class="muted">or join your friends</p>
+
+          <label for="code">Room code</label>
+          <input id="code" maxlength="6" placeholder="ABC123" />
+
+          <button type="button" id="join" class="secondary">
+            Join room
+          </button>
+        </form>
+      </section>
+
+      <section id="game" hidden>
+        <div class="roomhead">
+          <h2>Room <span id="roomcode"></span></h2>
+          <button id="copy" class="secondary">Copy invite link</button>
+        </div>
+
+        <div id="players"></div>
+
+        <div class="table">
+          <h2 id="status"></h2>
+          <div id="pile"></div>
+          <p id="activecolor"></p>
+
+          <div class="controls">
+            <button id="start">Deal the cards</button>
+            <button id="draw">Draw one</button>
+            <button id="pass" class="secondary">Pass turn</button>
+          </div>
+
+          <p id="timer"></p>
+        </div>
+
+        <div class="roomhead">
+          <h3>Your hand <span id="handcount"></span></h3>
+
+          <label>
+            <input id="uno" type="checkbox" />
+            Call UNO with this play
+          </label>
+        </div>
+
+        <div id="hand"></div>
+
+        <details>
+          <summary>Table activity</summary>
+          <ol id="log"></ol>
+        </details>
+      </section>
+
+      <p id="error" role="alert"></p>
+
+      <details>
+        <summary>How we play</summary>
+        <p>
+          Match the active color or symbol. Wild cards choose a color.
+          Skip and Reverse affect turns; with two players Reverse acts
+          as Skip. +2 and +4 draw cards and skip the next player.
+          No stacking. +4 requires no card of the active color.
+          Draw one, then play only that card or pass.
+          Tick Call UNO before playing down to one card, or draw two
+          as a penalty. Turns last 60 seconds. First empty hand wins.
+          Host can start a rematch. Refresh to reconnect to your seat.
+        </p>
+      </details>
+    </main>
+
+    <footer>
+      Made for the table, wherever you are.
+      <span>Unofficial fan game</span>
+    </footer>
+
+    <dialog id="colors">
+      <h2>Choose the next color</h2>
+      <div id="colorchoices"></div>
+      <button id="cancelcolor" class="secondary">Cancel</button>
+    </dialog>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
